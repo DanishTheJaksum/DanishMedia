@@ -14,7 +14,7 @@ app.set("views", path.join(__dirname, "\\public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // make the public folder public/static
-app.use(express.static(__dirname + "\\public"));
+app.use(express.static(__dirname + "/public"));
 // Options to get request
 const options = {
   method: "GET",
