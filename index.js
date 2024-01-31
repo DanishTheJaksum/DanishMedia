@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
 // Setting Views
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "\\public"));
+app.set("views", path.join(__dirname, "/public"));
 // Using BodyParser to retrieve info from post method
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
