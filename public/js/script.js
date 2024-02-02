@@ -24,4 +24,14 @@ function makeImage(text, imgURL, link, title) {
   return htmlCard;
 }
 
-export default makeImage;
+function makeTop(image_url, text) {
+  const htmlTop = `
+  <div class="image">
+    <img src="${image_url}" alt="Top Image">
+    <h1>${text}</h1>
+  </div>
+  `;
+  return htmlTop;
+}
+
+export { makeImage, makeTop };
