@@ -78,18 +78,37 @@
       import { makeImage, makeTop } from "./js/script.js";
       const container = document.querySelector(".container");
       const wrapper = document.querySelector(".wrapper");
-      fetch("<%= endpoint %>")
+      let headersList = {
+        Accept: "*/*",
+        "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+        "Content-Type": "application/json",
+      };
+
+      let bodyContent = JSON.stringify({
+        urlOBJ: [
+          "https://indianexpress.com/section/sports/",
+          "https://indianexpress.com/section/entertainment/",
+          "https://indianexpress.com/section/business/",
+          "https://indianexpress.com/section/political-pulse/",
+        ],
+      });
+
+      fetch("/homepage", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList,
+      })
         .then((json) => {
           return json.json();
         })
         .then((response) => {
-          for (let i = 0; i < response.Hrefs.length; i++) {
+          for (let i = 0; i < 20; i++) {
             if (response.Hrefs[i] != null) {
               container.innerHTML += makeImage(
                 response.Texts[i],
                 response.Images[i],
                 response.Hrefs[i],
-                "<%= title %>"
+                "Top News"
               );
 
               wrapper.innerHTML = makeTop(

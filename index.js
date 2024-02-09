@@ -9,12 +9,12 @@ const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
 // Setting Views
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "/public"));
+app.set("views", path.join(__dirname, "\\public"));
 // Using BodyParser to retrieve info from post method
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // make the public folder public/static
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "\\public"));
 // Options to get request
 const options = {
   method: "GET",
@@ -28,7 +28,7 @@ const options = {
 
 app.get("/", (req, res) => {
   options.url = "https://indianexpress.com/section/political-pulse/";
-  res.render("index", { endpoint: "/getHomePage", title: "Politics" });
+  res.render("homepage", { endpoint: "", title: "" });
 });
 
 app.get("/whoami", (req, res) => {
@@ -160,6 +160,59 @@ app.get("/getInternationalNews", (req, res) => {
     .catch(function (error) {
       res.status(500).send(error);
     });
+});
+
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
+app.post("/homepage", async (req, res) => {
+  const ops = {
+    method: "GET",
+    url: "",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const pairs = [];
+  for (let i = 0; i < req.body.urlOBJ.length; i++) {
+    ops.url = req.body.urlOBJ[i];
+    await axios
+      .request(ops)
+      .then(function (response) {
+        const page = response.data;
+        const $ = cheerio.load(page);
+
+        $("div.articles").each(function (index, element) {
+          const link = $(element).find("a").attr("href");
+          const image = $(element).find("img").attr("src");
+          const text = $(element).find(".title").text();
+          pairs.push({ link, image, text });
+        });
+      })
+      .catch(function (error) {
+        res.status(500).send(error);
+      });
+  }
+
+  // Shuffle the pairs array
+  const shuffledPairs = shuffleArray(pairs);
+
+  // Separate the shuffled pairs into arrays of links, images, and texts
+  const shuffledLinks = shuffledPairs.map((pair) => pair.link);
+  const shuffledImages = shuffledPairs.map((pair) => pair.image);
+  const shuffledTexts = shuffledPairs.map((pair) => pair.text);
+
+  const jsonObjects = {
+    Hrefs: shuffledLinks,
+    Images: shuffledImages,
+    Texts: shuffledTexts,
+  };
+  res.json(jsonObjects);
 });
 
 // Starting Server
