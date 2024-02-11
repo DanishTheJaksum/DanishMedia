@@ -1,0 +1,25 @@
+{
+  "name": "AbbasiMedia",
+  "short_name": "AbbasiMedia",
+  "start_url": "/index.ejs",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#E7E7E4",
+  "icons": [
+    {
+      "src": "./src/apple144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./src/apple512.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg"
+    }
+  ],
+  "scope": "/",
+  "serviceworker": {
+    "src": "/service-worker.js"
+  }
+}

@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Fast New" />
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="theme-color" content="#e7e7e4" />
     <title>WhoAmI</title>
     <link rel="shortcut icon" href="./src/apple.jpg" type="image/x-icon" />
     <link rel="apple-touch-icon" href="./src/apple.jpg" />
@@ -22,12 +25,95 @@
       integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
       crossorigin="anonymous"
     ></script>
+    <script src="./js/paper.js" defer></script>
     <link rel="stylesheet" href="./css/paper.css" />
+    <style>
+      .page-1 {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .mosh-mosh {
+        position: relative;
+        background-image: url("./src/apple.jpg");
+        color: rgb(255, 255, 255);
+        text-shadow: 2px 2px 4px #ff2020;
+      }
+      .mosh-mosh::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 1;
+      }
+
+      .web-card {
+        margin: 10px 0;
+        width: 350px;
+        height: 500px;
+        border-radius: 20px;
+        box-shadow: 0 0 7px 0.5px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: 20px 10px;
+      }
+      .top-info {
+        width: 80%;
+        z-index: 2;
+      }
+      .top-info h6 {
+        text-align: justify;
+      }
+      .web-card img {
+        width: 150px;
+        height: 150px;
+        aspect-ratio: 1/1;
+        border-radius: 20px;
+        object-fit: contain;
+        mix-blend-mode: multiply;
+      }
+      .web-card .description {
+        text-align: justify;
+        font-size: 15px;
+      }
+      .links {
+        width: 100%;
+        height: 30px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .web-card .card-title {
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .link-icon {
+        margin: 10px;
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">AbbasiMedia</a>
+        <div class="d-flex align-items-center">
+          <a class="navbar-brand" href="/">AbbasiMedia</a>
+          <img
+            src="./src/apple512.jpg"
+            class="img-thumbnail me-2"
+            alt="me"
+            width="50"
+            style="border-radius: 50%"
+          />
+        </div>
         <button
           class="navbar-toggler"
           type="button"
@@ -67,27 +153,93 @@
         </div>
       </div>
     </nav>
+    <div class="page-1 mosh-mosh">
+      <div class="top-info">
+        <h1>Welcome, To Abbasi Media</h1>
+        <h6>
+          AbbasiMedia, Your trusted source for up-to-the-minute news and
+          information. Established with a commitment to delivering accurate,
+          reliable, and timely reporting, Abbasi Media is your go-to destination
+          for staying informed about current events, breaking news, and trending
+          topics from around the globe. Whether you're looking for the latest
+          developments in world affairs, insightful opinion pieces, in-depth
+          investigative reports, or just want to stay updated on the day's top
+          stories, Abbasi Media has you covered. Our user-friendly website is
+          designed to make it easy for you to navigate, explore, and engage with
+          our content, whether you're accessing it from your desktop, laptop,
+          tablet, or mobile device. Thank you for choosing Abbasi Media as your
+          trusted source for news and information. We look forward to keeping
+          you informed, empowered, and inspired with our comprehensive coverage
+          and insightful analysis. Stay tuned for the latest updates, because at
+          Abbasi Media, the news never stops!
+        </h6>
+      </div>
+    </div>
+    <div class="container">
+      <h1>About Us</h1>
+    </div>
     <div
       class="container"
       style="
         height: 90%;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
       "
     >
-      <img src="./src/dan.jpg" class="img-thumbnail" alt="me" width="200" />
-      <h4>Danish Ahmad Jaskum</h4>
-      <h6 style="text-align: justify">
-        A dynamic <i>individual</i> making waves in the world of <b>technology</b> and media.
-        With a flair for innovation, Danish is carving his niche at the
-        intersection of creativity and digital prowess. Whether he's unraveling
-        the latest tech trends or crafting compelling narratives, Danish brings
-        a fresh perspective to the media landscape. Join him on his journey as
-        he navigates the fast-paced digital realm, leaving an indelible mark on
-        the ever-evolving media industry.
-      </h6>
+      <div class="web-card">
+        <img src="./src/dan.jpg" alt="dan" />
+
+        <div class="card-title">Hi, I'm Danish</div>
+        <div class="description">
+          I'm not just a visionary MBA student at the Islamic University of
+          Science and Technology (IUST) in Awantipora, Jammu and Kashmir; I'm
+          also the innovative mind behind Media A Website, a dynamic platform
+          revolutionizing the digital media landscape. From the picturesque town
+          of Uri, nestled in the breathtaking landscapes of Jammu and Kashmir.
+        </div>
+        <div class="links">
+          <div class="instagram">
+            <a href="https://instagram.com/danish27586" target="_blank">
+              <img src="./src/insta.png" style="width: 50px" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="web-card">
+        <img src="./src/adn.jpg" alt="Adnan" style="margin: 20px" />
+
+        <div class="card-title">Hi, I'm Beigh Adnan</div>
+        <div class="description">
+          I'm, a visionary vlogger from the town of Uri in Jammu and Kashmir,
+          I'm bringing my creativeness and passion for storytelling to the
+          forefront as a co-founder of Media A Website.
+        </div>
+        <div class="links">
+          <div class="instagram link-icon">
+            <a href="https://instagram.com/iamadnanbeigh" target="_blank">
+              <img src="./src/insta.png" style="width: 50px" alt="" />
+            </a>
+          </div>
+          <div class="youtube link-icon">
+            <a href="https://www.youtube.com/@AdnanBeighVlogs" target="_blank">
+              <img src="./src/yt.png" style="width: 50px" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="container"
+        style="display: flex; justify-content: center; align-items: center"
+      >
+        <h3>If you have a query you can mail us.</h3>
+        <a href="mailto:jaskum3012@gmail.com" target="_blank">
+          <img src="./src/mail.png" width="50" style="margin: 10px" />
+        </a>
+      </div>
+      <!--  -->
     </div>
   </body>
 </html>
