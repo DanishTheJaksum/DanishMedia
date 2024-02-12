@@ -3,7 +3,6 @@ const axios = require("axios").default;
 const cheerio = require("cheerio");
 const express = require("express");
 const path = require("path");
-const firebase = require("firebase-admin");
 const app = express();
 const bodyParser = require("body-parser");
 // Setting PORT to the .env PORT if available, if not then 3000
@@ -24,19 +23,6 @@ const options = {
     "Content-Type": "application/json",
   },
 };
-
-// Firebase analytics
-const firebaseConfig = {
-  apiKey: "AIzaSyBVhdEqSOG5ifCX5uhG8XHmDyDVME0616E",
-  authDomain: "abbasimedia-30d9c.firebaseapp.com",
-  projectId: "abbasimedia-30d9c",
-  storageBucket: "abbasimedia-30d9c.appspot.com",
-  messagingSenderId: "432874569223",
-  appId: "1:432874569223:web:b19b6c8faa50867028f4a2",
-  measurementId: "G-HDK1YT3WSR",
-};
-
-firebase.initializeApp(firebaseConfig);
 
 // endpoints
 app.get("/", (req, res) => {

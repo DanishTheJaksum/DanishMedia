@@ -26,30 +26,34 @@
       crossorigin="anonymous"
     ></script>
     <script src="./js/paper.js" defer></script>
+    <script src="./js/firebase.js" defer type="module"></script>
     <link rel="stylesheet" href="./css/paper.css" />
     <style>
       .page-1 {
         width: 100%;
-        height: 100vh;
+        height: fit-content;
         display: flex;
         justify-content: center;
-        align-items: center;
       }
       .mosh-mosh {
-        position: relative;
-        background-image: url("./src/apple.jpg");
-        color: rgb(255, 255, 255);
-        text-shadow: 2px 2px 4px #ff2020;
+        padding: 20px;
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
-      .mosh-mosh::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        z-index: 1;
+
+      .mosh-mosh img {
+        max-width: 200px;
+        border-radius: 20%;
+        margin: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        order: 1; /* This property changes the order of the image within the flex container */
+      }
+
+      .mosh-mosh h1,
+      .mosh-mosh h6 {
+        text-align: center;
+        order: 2; /* This property changes the order of the text within the flex container */
       }
 
       .web-card {
@@ -65,7 +69,11 @@
         padding: 20px 10px;
       }
       .top-info {
-        width: 80%;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        width: 90%;
         z-index: 2;
       }
       .top-info h6 {
@@ -155,6 +163,7 @@
     </nav>
     <div class="page-1 mosh-mosh">
       <div class="top-info">
+        <img src="./src/apple512.jpg" class="img-thumbnail" width="400" />
         <h1>Welcome, To Abbasi Media</h1>
         <h6>
           AbbasiMedia, Your trusted source for up-to-the-minute news and
@@ -175,6 +184,7 @@
         </h6>
       </div>
     </div>
+
     <div class="container">
       <h1>About Us</h1>
     </div>
